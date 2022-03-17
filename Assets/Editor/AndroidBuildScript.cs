@@ -3,6 +3,9 @@ using UnityEditor.Build.Reporting;
 using UnityEngine;
 
 public class AndroidBuildScript {
+    /// <summary>
+    /// cli経由での呼び出しI/F
+    /// </summary>
     static void DebugBuildAndroid() {
         BuildSummary summary = BuildAndroid();
         if (summary.result == BuildResult.Failed) {
@@ -13,7 +16,7 @@ public class AndroidBuildScript {
     // Unity　Editorにメニューを追加するスクリプト
     // File => Build Androidを追加する
     // see: https://docs.unity3d.com/ScriptReference/MenuItem.html
-    [MenuItem("File/Build Android", false, 220 /* priority*/)]
+    [MenuItem("File/Build Android", false /* isValidateFunction */, 222 /* priority*/)]
     static void DebugBuildAndroidMenuItem() {
         BuildTargetGroup currentBuildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
         BuildTarget currentBuildTarget = EditorUserBuildSettings.activeBuildTarget;
@@ -27,7 +30,7 @@ public class AndroidBuildScript {
     /// Andoridのビルド
     /// </summary>
     /// <returns></returns>
-    static BuildSummary BuildAndroid() {
+    private static BuildSummary BuildAndroid() {
         var options = CreateBuildOption();
 
         // https://docs.unity3d.com/ja/current/ScriptReference/BuildPipeline.BuildPlayer.html

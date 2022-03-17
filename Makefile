@@ -9,5 +9,4 @@ help: ## make taskの説明を表示する
 .PHONY: build-android-dev
 build-android-dev: ## android buildを実行する
 	export PATH=$PATH:/Applications/Unity/Hub/Editor/2020.3.24f1/Unity.app/Contents/MacOS/
-	Unity -version
-	Unity -quit -batchmode -nographics -executeMethod AndroidBuildScript.BuildAndroid
+	Unity -quit -batchmode -nographics -executeMethod AndroidBuildScript.DebugBuildAndroid
